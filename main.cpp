@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Menu khusus untuk satu event
+
 void menuEvent(ListEvent &LE, ListPeserta &LP, ListRelasi &LR, adrEvent E) {
     int pilih;
     do {
@@ -62,12 +62,10 @@ void menuEvent(ListEvent &LE, ListPeserta &LP, ListRelasi &LR, adrEvent E) {
             cout << "Masukkan nama peserta yang ingin dihapus dari event: ";
             cin >> nama;
 
-            // hapus relasi yang menghubungkan peserta dengan event ini
             deletePesertaFromEvent(LR, E, nama);
             cout << "Jika peserta ditemukan, relasi telah dihapus.\n";
 
         } else if (pilih == 5) {
-            // kembali
         } else {
             cout << "Pilihan tidak dikenali. Silakan coba lagi.\n";
         }
@@ -75,7 +73,6 @@ void menuEvent(ListEvent &LE, ListPeserta &LP, ListRelasi &LR, adrEvent E) {
     } while (pilih != 5);
 }
 
-// Fungsi bantu untuk menghapus semua relasi yang berkaitan dengan sebuah event
 void removeAllRelasiOfEvent(ListRelasi &LR, adrEvent E) {
     adrRelasi curr = LR.first;
     adrRelasi prev = NULL;
@@ -106,7 +103,6 @@ int main() {
     createPesertaList(LP);
     createRelasiList(LR);
 
-    // contoh data awal (opsional)
     Event e1 = {"E1", "Konser Musik", "Jakarta", "01-12-2025", "19:00", 150000};
     Event e2 = {"E2", "Seminar AI", "Bandung", "05-12-2025", "09:00", 50000};
     insertLastEvent(LE, newEvent(e1));
@@ -162,9 +158,7 @@ int main() {
             if (E == NULL) {
                 cout << "Event tidak ditemukan.\n";
             } else {
-                // hapus semua relasi yang berkaitan dengan event ini
                 removeAllRelasiOfEvent(LR, E);
-                // hapus node event
                 deleteEvent(LE, idEv);
                 cout << "Event dan relasinya telah dihapus.\n";
             }
@@ -174,7 +168,6 @@ int main() {
             showAllEvent(LE);
 
         } else if (pilih == 5) {
-            // keluar
         } else {
             cout << "Pilihan tidak dikenali. Silakan coba lagi.\n";
         }
@@ -184,3 +177,4 @@ int main() {
     cout << "Program selesai.\n";
     return 0;
 }
+
