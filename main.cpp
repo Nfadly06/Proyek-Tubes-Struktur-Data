@@ -208,9 +208,9 @@ int main() {
             cin >> data.lokasi;
             cout << "Tanggal (DD-MM-YYYY)                    : ";
             cin >> data.tanggal;
-            cout << "Jam (contoh format: 12.59)              : ";
+            cout << "Jam mulai event (contoh format: 12.59)  : ";
             cin >> data.jam;
-            cout << "Harga                                   : ";
+            cout << "Harga Tiket (contoh format: 100000)     : ";
             cin >> data.hargaTiket;
 
             insertLastEvent(LE, newEvent(data));
@@ -351,5 +351,6 @@ int main() {
     cout << "Program selesai.\n";
     return 0;
 }
+
 
 
