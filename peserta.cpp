@@ -33,7 +33,9 @@ void insertLastPeserta(ListPeserta &LP, adrPeserta P) {
 bool isPesertaIDUsed(ListPeserta LP, string id) {
     adrPeserta P = LP.first;
     while (P != NULL) {
-        if (P->info.idPeserta == id) return true;
+        if (P->info.idPeserta == id) {
+            return true;
+        }
         P = P->next;
     }
     return false;
@@ -42,7 +44,9 @@ bool isPesertaIDUsed(ListPeserta LP, string id) {
 adrPeserta searchPesertaByID(ListPeserta LP, string id) {
     adrPeserta P = LP.first;
     while (P != NULL) {
-        if (P->info.idPeserta == id) return P;
+        if (P->info.idPeserta == id) {
+            return P;
+        }
         P = P->next;
     }
     return NULL;
@@ -51,7 +55,9 @@ adrPeserta searchPesertaByID(ListPeserta LP, string id) {
 adrPeserta searchPesertaByName(ListPeserta LP, string nama) {
     adrPeserta P = LP.first;
     while (P != NULL) {
-        if (P->info.nama == nama) return P;
+        if (P->info.nama == nama) {
+            return P;
+        }
         P = P->next;
     }
     return NULL;
@@ -59,32 +65,34 @@ adrPeserta searchPesertaByName(ListPeserta LP, string nama) {
 
 bool deletePesertaByID(ListPeserta &LP, string id) {
     adrPeserta P = searchPesertaByID(LP, id);
-    if (P == NULL) return false;
-
-    if (P->prev != NULL)
+    if (P == NULL) {
+        return false;
+    }
+    if (P->prev != NULL) {
         P->prev->next = P->next;
-    else
+    } else {
         LP.first = P->next;
-
-    if (P->next != NULL)
+    }
+    if (P->next != NULL) {
         P->next->prev = P->prev;
-
+    }
     delete P;
     return true;
 }
 
 bool deletePesertaByName(ListPeserta &LP, string nama) {
     adrPeserta P = searchPesertaByName(LP, nama);
-    if (P == NULL) return false;
-
-    if (P->prev != NULL)
+    if (P == NULL) {
+        return false;
+    }
+    if (P->prev != NULL) {
         P->prev->next = P->next;
-    else
+    } else {
         LP.first = P->next;
-
-    if (P->next != NULL)
+    }
+    if (P->next != NULL) {
         P->next->prev = P->prev;
-
+    }
     delete P;
     return true;
 }
@@ -120,4 +128,5 @@ void showAllPeserta(ListPeserta LP) {
         P = P->next;
     }
 }
+
 
