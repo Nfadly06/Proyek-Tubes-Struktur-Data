@@ -1,26 +1,14 @@
 #include "peserta.h"
 using namespace std;
 
-/*
-========================================================
-    IMPLEMENTASI LIST PESERTA (CHILD)
-    Mewakili List Child pada Model MLL Tipe B
-========================================================
-*/
-
-/* ================= CREATE LIST ================= */
-// Membuat list peserta kosong
 void createPesertaList(ListPeserta &LP) {
     LP.first = NULL;
 }
 
-// Mengecek apakah list kosong
 bool isEmptyPeserta(ListPeserta LP) {
     return LP.first == NULL;
 }
 
-/* ================= CREATE NODE ================= */
-// Membuat node peserta baru
 adrPeserta newPeserta(Peserta x) {
     adrPeserta P = new elPeserta;
     P->info = x;
@@ -29,8 +17,6 @@ adrPeserta newPeserta(Peserta x) {
     return P;
 }
 
-/* ================= INSERT LAST (DLL) ================= */
-// Sesuai spesifikasi: Insert Child dilakukan di elemen terakhir
 void insertLastPeserta(ListPeserta &LP, adrPeserta P) {
     if (isEmptyPeserta(LP)) {
         LP.first = P;
@@ -44,8 +30,6 @@ void insertLastPeserta(ListPeserta &LP, adrPeserta P) {
     }
 }
 
-/* ================= VALIDASI ID PESERTA ================= */
-// Mengecek apakah ID Peserta sudah digunakan
 bool isPesertaIDUsed(ListPeserta LP, string id) {
     adrPeserta P = LP.first;
     while (P != NULL) {
@@ -55,9 +39,6 @@ bool isPesertaIDUsed(ListPeserta LP, string id) {
     return false;
 }
 
-/* ================= SEARCH ================= */
-// Mencari peserta berdasarkan ID
-// Sesuai spesifikasi: Find Child by ID
 adrPeserta searchPesertaByID(ListPeserta LP, string id) {
     adrPeserta P = LP.first;
     while (P != NULL) {
@@ -67,8 +48,6 @@ adrPeserta searchPesertaByID(ListPeserta LP, string id) {
     return NULL;
 }
 
-// Mencari peserta berdasarkan Nama
-// Sesuai spesifikasi: Find Child by Nama
 adrPeserta searchPesertaByName(ListPeserta LP, string nama) {
     adrPeserta P = LP.first;
     while (P != NULL) {
@@ -78,9 +57,6 @@ adrPeserta searchPesertaByName(ListPeserta LP, string nama) {
     return NULL;
 }
 
-/* ================= DELETE CHILD ================= */
-// Menghapus peserta berdasarkan ID
-// Sesuai spesifikasi Delete Child (nanti dikaitkan hapus relasi)
 bool deletePesertaByID(ListPeserta &LP, string id) {
     adrPeserta P = searchPesertaByID(LP, id);
     if (P == NULL) return false;
@@ -97,7 +73,6 @@ bool deletePesertaByID(ListPeserta &LP, string id) {
     return true;
 }
 
-// Menghapus peserta berdasarkan Nama (versi lama diperbaiki dan dipertahankan)
 bool deletePesertaByName(ListPeserta &LP, string nama) {
     adrPeserta P = searchPesertaByName(LP, nama);
     if (P == NULL) return false;
@@ -114,8 +89,6 @@ bool deletePesertaByName(ListPeserta &LP, string nama) {
     return true;
 }
 
-/* ================= COUNT ================= */
-// Menghitung jumlah peserta
 int countPeserta(ListPeserta LP) {
     int count = 0;
     adrPeserta P = LP.first;
@@ -127,9 +100,6 @@ int countPeserta(ListPeserta LP) {
     return count;
 }
 
-/* ================= SHOW ALL PESERTA ================= */
-// Menampilkan seluruh data peserta
-// Sesuai spesifikasi Show List Child + jumlah event nanti terkait relasi
 void showAllPeserta(ListPeserta LP) {
     if (isEmptyPeserta(LP)) {
         cout << "Tidak ada data peserta." << endl;
@@ -150,3 +120,4 @@ void showAllPeserta(ListPeserta LP) {
         P = P->next;
     }
 }
+
