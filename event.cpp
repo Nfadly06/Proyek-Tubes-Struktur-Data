@@ -70,14 +70,16 @@ void deleteLastEvent(ListEvent &LE) {
             deleteFirstEvent(LE);
         } else {
             adrEvent P = LE.first;
-            adrEvent prev = NULL;
+            adrEvent Q = NULL;
 
             while (P->next != NULL) {
-                prev = P;
+                Q = P;
                 P = P->next;
             }
 
-            if (prev != NULL) prev->next = NULL;
+            if (Q != NULL) {
+                Q->next = NULL;
+            }
             delete P;
         }
     }
@@ -85,22 +87,25 @@ void deleteLastEvent(ListEvent &LE) {
 
 
 bool deleteEvent(ListEvent &LE, string id) {
-    if (isEmptyEvent(LE)) return false;
-
+    if (isEmptyEvent(LE)) {
+        return false;
+    }
     adrEvent P = LE.first;
-    adrEvent prev = NULL;
+    adrEvent Q = NULL;
 
     while (P != NULL && P->info.idEvent != id) {
-        prev = P;
+        Q = P;
         P = P->next;
     }
 
-    if (P == NULL) return false; 
-
-    if (prev == NULL) {
+    if (P == NULL) {
+        return false; 
+    }
+    
+    if (Q == NULL) {
         LE.first = P->next;
     } else {
-        prev->next = P->next;
+        Q->next = P->next;
     }
 
     delete P;
@@ -123,7 +128,6 @@ int countEvent(ListEvent LE) {
 void showAllEvent(ListEvent LE) {
     if (isEmptyEvent(LE)) {
         cout << "Tidak ada data event." << endl;
-        return;
     }
 
     adrEvent P = LE.first;
@@ -141,4 +145,5 @@ void showAllEvent(ListEvent LE) {
         P = P->next;
     }
 }
+
 
