@@ -2,7 +2,6 @@
 #include <iostream>
 using namespace std;
 
-/* ================= CREATE LIST ================= */
 void createRelasiList(ListRelasi &LR) {
     LR.first = NULL;
 }
@@ -11,7 +10,6 @@ bool isEmptyRelasi(ListRelasi LR) {
     return LR.first == NULL;
 }
 
-/* ================= NEW NODE ================= */
 adrRelasi newRelasi(adrEvent E, adrPeserta P) {
     adrRelasi R = new elRelasi;
     R->E = E;
@@ -20,8 +18,6 @@ adrRelasi newRelasi(adrEvent E, adrPeserta P) {
     return R;
 }
 
-/* ================= INSERT RELATION ================= */
-// Insert relasi di akhir
 void insertRelasi(ListRelasi &LR, adrRelasi R) {
     if (isEmptyRelasi(LR)) {
         LR.first = R;
@@ -34,8 +30,6 @@ void insertRelasi(ListRelasi &LR, adrRelasi R) {
     }
 }
 
-/* ================= CEK RELASI ================= */
-// Mengecek apakah event & peserta punya relasi
 bool isRelated(ListRelasi LR, adrEvent E, adrPeserta P) {
     adrRelasi R = LR.first;
     while (R != NULL) {
@@ -45,8 +39,6 @@ bool isRelated(ListRelasi LR, adrEvent E, adrPeserta P) {
     return false;
 }
 
-/* ================= SHOW DATA ================= */
-// Show Peserta berdasarkan Event (Parent)
 void showPesertaByEvent(ListRelasi LR, adrEvent E) {
     adrRelasi R = LR.first;
     bool found = false;
@@ -66,7 +58,6 @@ void showPesertaByEvent(ListRelasi LR, adrEvent E) {
     }
 }
 
-// Show Event berdasarkan Peserta (Child)
 void showEventByPeserta(ListRelasi LR, adrPeserta P) {
     adrRelasi R = LR.first;
     bool found = false;
@@ -86,7 +77,6 @@ void showEventByPeserta(ListRelasi LR, adrPeserta P) {
     }
 }
 
-// Show Semua Event + Pesertanya
 void showAllEventWithPeserta(ListRelasi LR) {
     adrRelasi R = LR.first;
 
@@ -102,7 +92,6 @@ void showAllEventWithPeserta(ListRelasi LR) {
     }
 }
 
-// Show Semua Peserta + Event yang diikuti
 void showAllPesertaWithEvent(ListRelasi LR) {
     adrRelasi R = LR.first;
 
@@ -118,8 +107,6 @@ void showAllPesertaWithEvent(ListRelasi LR) {
     }
 }
 
-/* ================= DELETE RELATION ================= */
-// Hapus relasi spesifik event - peserta
 void deletePesertaFromEvent(ListRelasi &LR, adrEvent E, string idPeserta) {
     adrRelasi R = LR.first;
     adrRelasi prev = NULL;
@@ -136,7 +123,6 @@ void deletePesertaFromEvent(ListRelasi &LR, adrEvent E, string idPeserta) {
     }
 }
 
-// Hapus semua relasi milik suatu event
 void deleteRelasiByEvent(ListRelasi &LR, adrEvent E) {
     adrRelasi R = LR.first;
     adrRelasi prev = NULL;
@@ -155,7 +141,6 @@ void deleteRelasiByEvent(ListRelasi &LR, adrEvent E) {
     }
 }
 
-// Hapus semua relasi milik suatu peserta
 void deleteRelasiByPeserta(ListRelasi &LR, adrPeserta P) {
     adrRelasi R = LR.first;
     adrRelasi prev = NULL;
@@ -174,8 +159,6 @@ void deleteRelasiByPeserta(ListRelasi &LR, adrPeserta P) {
     }
 }
 
-/* ================= COUNT ================= */
-// Hitung jumlah peserta yang mengikuti suatu event
 int countPesertaByEvent(ListRelasi LR, adrEvent E) {
     int count = 0;
     adrRelasi R = LR.first;
@@ -188,7 +171,6 @@ int countPesertaByEvent(ListRelasi LR, adrEvent E) {
     return count;
 }
 
-// Hitung jumlah event yang diikuti peserta
 int countEventByPeserta(ListRelasi LR, adrPeserta P) {
     int count = 0;
     adrRelasi R = LR.first;
@@ -200,7 +182,6 @@ int countEventByPeserta(ListRelasi LR, adrPeserta P) {
 
     return count;
 }
-// Hitung jumlah peserta yang tidak ikut event apapun
 int countChildWithoutParent(ListPeserta LP, ListRelasi LR) {
     int count = 0;
     adrPeserta P = LP.first;
@@ -222,7 +203,6 @@ int countChildWithoutParent(ListPeserta LP, ListRelasi LR) {
     }
     return count;
 }
-// Hitung jumlah event yang tidak memiliki peserta (Parent tanpa Child)
 int countParentWithoutChild(ListEvent LE, ListRelasi LR) {
     int count = 0;
     adrEvent E = LE.first;
@@ -245,7 +225,6 @@ int countParentWithoutChild(ListEvent LE, ListRelasi LR) {
 
     return count;
 }
-// pindah peserta ke event lain maupun sebaliknya
 bool editRelasi(ListRelasi &LR, adrEvent oldE, string idPeserta, adrEvent newE) {
     adrRelasi R = LR.first;
 
@@ -258,3 +237,4 @@ bool editRelasi(ListRelasi &LR, adrEvent oldE, string idPeserta, adrEvent newE) 
     }
     return false;
 }
+
