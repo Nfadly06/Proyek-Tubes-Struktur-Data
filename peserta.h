@@ -4,8 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
-
 struct Peserta {
     string idPeserta;
     string nama;
