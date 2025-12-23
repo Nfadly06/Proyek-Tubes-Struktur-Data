@@ -84,13 +84,13 @@ void menuEvent(ListEvent &LE, ListPeserta &LP, ListRelasi &LR, adrEvent E) {
                 continue;
             }
 
-            cout << "Nama          : ";
+            cout << "Nama (contoh format: Morgan_Octogramiuss)         : ";
             cin >> data.nama;
-            cout << "Telepon       : ";
+            cout << "Telepon (contoh format: 0813215599 / +6281325599) : ";
             cin >> data.telepon;
-            cout << "Jenis Kelamin : ";
+            cout << "Jenis Kelamin (Pria/Wanita. pilih salah satu)     : ";
             cin >> data.jenisKelamin;
-            cout << "Jenis Peserta : ";
+            cout << "Jenis Peserta (Umum/Reguler/VIP tergantung event) : ";
             cin >> data.jenisPeserta;
 
             adrPeserta P = newPeserta(data);
@@ -351,4 +351,5 @@ int main() {
     cout << "Program selesai.\n";
     return 0;
 }
+
 
