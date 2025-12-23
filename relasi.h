@@ -4,8 +4,6 @@
 #include "event.h"
 #include "peserta.h"
 
-
-
 typedef struct elRelasi *adrRelasi;
 
 struct elRelasi {
