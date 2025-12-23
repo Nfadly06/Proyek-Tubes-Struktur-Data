@@ -7,7 +7,6 @@
 
 using namespace std;
 
-/* ====================== TABEL UTILITIES ====================== */
 void printLine(int width) {
     cout << setfill('-') << setw(width) << "-" << setfill(' ') << endl;
 }
@@ -112,7 +111,6 @@ void menuEvent(ListEvent &LE, ListPeserta &LP, ListRelasi &LR, adrEvent E) {
     } while (pilih != 5);
 }
 
-/* ================= HAPUS SEMUA RELASI EVENT ================= */
 void removeAllRelasiOfEvent(ListRelasi &LR, adrEvent E) {
     adrRelasi curr = LR.first;
     adrRelasi prev = NULL;
@@ -135,7 +133,6 @@ void removeAllRelasiOfEvent(ListRelasi &LR, adrEvent E) {
     }
 }
 
-/* ======================== MAIN ======================== */
 int main() {
     ListEvent LE;
     ListPeserta LP;
@@ -354,3 +351,4 @@ int main() {
     cout << "Program selesai.\n";
     return 0;
 }
+
