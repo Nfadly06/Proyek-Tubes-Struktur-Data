@@ -33,7 +33,9 @@ void insertRelasi(ListRelasi &LR, adrRelasi R) {
 bool isRelated(ListRelasi LR, adrEvent E, adrPeserta P) {
     adrRelasi R = LR.first;
     while (R != NULL) {
-        if (R->E == E && R->P == P) return true;
+        if (R->E == E && R->P == P) {
+            return true;
+        }
         R = R->next;
     }
     return false;
@@ -86,8 +88,7 @@ void showAllEventWithPeserta(ListRelasi LR) {
     }
 
     while (R != NULL) {
-        cout << "Event: " << R->E->info.namaEvent
-             << " | Peserta: " << R->P->info.nama << endl;
+        cout << "Event: " << R->E->info.namaEvent << " | Peserta: " << R->P->info.nama << endl;
         R = R->next;
     }
 }
@@ -97,12 +98,10 @@ void showAllPesertaWithEvent(ListRelasi LR) {
 
     if (R == NULL) {
         cout << "Belum ada relasi peserta - event." << endl;
-        return;
     }
 
     while (R != NULL) {
-        cout << "Peserta: " << R->P->info.nama
-             << " | Event: " << R->E->info.namaEvent << endl;
+        cout << "Peserta: " << R->P->info.nama << " | Event: " << R->E->info.namaEvent << endl;
         R = R->next;
     }
 }
@@ -113,10 +112,12 @@ void deletePesertaFromEvent(ListRelasi &LR, adrEvent E, string idPeserta) {
 
     while (R != NULL) {
         if (R->E == E && R->P->info.idPeserta == idPeserta) {
-            if (prev == NULL) LR.first = R->next;
-            else prev->next = R->next;
+            if (prev == NULL) {
+                LR.first = R->next;
+            } else {
+                prev->next = R->next;
+            }
             delete R;
-            return;
         }
         prev = R;
         R = R->next;
@@ -130,8 +131,11 @@ void deleteRelasiByEvent(ListRelasi &LR, adrEvent E) {
     while (R != NULL) {
         if (R->E == E) {
             adrRelasi temp = R;
-            if (prev == NULL) LR.first = R->next;
-            else prev->next = R->next;
+            if (prev == NULL) {
+                LR.first = R->next;
+            } else {
+                prev->next = R->next;
+            }
             R = R->next;
             delete temp;
         } else {
@@ -148,8 +152,11 @@ void deleteRelasiByPeserta(ListRelasi &LR, adrPeserta P) {
     while (R != NULL) {
         if (R->P == P) {
             adrRelasi temp = R;
-            if (prev == NULL) LR.first = R->next;
-            else prev->next = R->next;
+            if (prev == NULL) {
+                LR.first = R->next;
+            } else {
+                prev->next = R->next;
+            }
             R = R->next;
             delete temp;
         } else {
@@ -164,7 +171,9 @@ int countPesertaByEvent(ListRelasi LR, adrEvent E) {
     adrRelasi R = LR.first;
 
     while (R != NULL) {
-        if (R->E == E) count++;
+        if (R->E == E) {
+            count++;
+        }
         R = R->next;
     }
 
@@ -198,7 +207,9 @@ int countChildWithoutParent(ListPeserta LP, ListRelasi LR) {
             R = R->next;
         }
 
-        if (!punyaParent) count++;
+        if (!punyaParent) {
+            count++;
+        }
         P = P->next;
     }
     return count;
@@ -219,7 +230,9 @@ int countParentWithoutChild(ListEvent LE, ListRelasi LR) {
             R = R->next;
         }
 
-        if (!punyaChild) count++;
+        if (!punyaChild) {
+            count++;
+        }
         E = E->next;
     }
 
@@ -237,4 +250,5 @@ bool editRelasi(ListRelasi &LR, adrEvent oldE, string idPeserta, adrEvent newE) 
     }
     return false;
 }
+
 
