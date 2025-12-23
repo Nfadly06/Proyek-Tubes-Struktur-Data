@@ -1,7 +1,6 @@
 #include "event.h"
 using namespace std;
 
-
 void createEventList(ListEvent &LE) {
     LE.first = NULL;
 }
@@ -41,7 +40,9 @@ void insertLastEvent(ListEvent &LE, adrEvent E) {
 bool isEventIDUsed(ListEvent LE, string id) {
     adrEvent P = LE.first;
     while (P != NULL) {
-        if (P->info.idEvent == id) return true;
+        if (P->info.idEvent == id) {
+            return true;
+        }
         P = P->next;
     }
     return false;
@@ -50,7 +51,9 @@ bool isEventIDUsed(ListEvent LE, string id) {
 adrEvent searchEvent(ListEvent LE, string id) {
     adrEvent P = LE.first;
     while (P != NULL) {
-        if (P->info.idEvent == id) return P;
+        if (P->info.idEvent == id) {
+            return P;
+        }
         P = P->next;
     }
     return NULL;
@@ -145,5 +148,3 @@ void showAllEvent(ListEvent LE) {
         P = P->next;
     }
 }
-
-
