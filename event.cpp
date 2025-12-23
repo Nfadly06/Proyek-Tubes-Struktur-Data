@@ -1,26 +1,15 @@
 #include "event.h"
 using namespace std;
 
-/*
-========================================================
-    IMPLEMENTASI LIST EVENT (PARENT)
-    Mewakili List Parent pada Model MLL Tipe B
-========================================================
-*/
 
-// ================== CREATE LIST ==================
-// Membuat list event awal (kosong)
 void createEventList(ListEvent &LE) {
     LE.first = NULL;
 }
 
-// Mengecek apakah list kosong
 bool isEmptyEvent(ListEvent LE) {
     return LE.first == NULL;
 }
 
-// ================== NEW NODE ==================
-// Membuat node event baru berisi data event
 adrEvent newEvent(Event x) {
     adrEvent E = new elEvent;
     E->info = x;
@@ -28,8 +17,6 @@ adrEvent newEvent(Event x) {
     return E;
 }
 
-// ================== INSERT ==================
-// Insert event ke bagian awal list
 void insertFirstEvent(ListEvent &LE, adrEvent E) {
     if (isEmptyEvent(LE)) {
         LE.first = E;
@@ -39,8 +26,6 @@ void insertFirstEvent(ListEvent &LE, adrEvent E) {
     }
 }
 
-// Insert event sebagai elemen terakhir
-// Sesuai spesifikasi tubes → Insert Parent dilakukan sebagai elemen terakhir
 void insertLastEvent(ListEvent &LE, adrEvent E) {
     if (isEmptyEvent(LE)) {
         LE.first = E;
@@ -53,8 +38,6 @@ void insertLastEvent(ListEvent &LE, adrEvent E) {
     }
 }
 
-// ================== SEARCH ==================
-// Mengecek apakah suatu ID Event sudah ada
 bool isEventIDUsed(ListEvent LE, string id) {
     adrEvent P = LE.first;
     while (P != NULL) {
@@ -64,8 +47,6 @@ bool isEventIDUsed(ListEvent LE, string id) {
     return false;
 }
 
-// Mencari Event berdasarkan ID Event
-// Sesuai spesifikasi → Find Element Parent (Sequential Search)
 adrEvent searchEvent(ListEvent LE, string id) {
     adrEvent P = LE.first;
     while (P != NULL) {
@@ -75,8 +56,6 @@ adrEvent searchEvent(ListEvent LE, string id) {
     return NULL;
 }
 
-// ================== DELETE ==================
-// Menghapus event pertama
 void deleteFirstEvent(ListEvent &LE) {
     if (!isEmptyEvent(LE)) {
         adrEvent P = LE.first;
@@ -85,7 +64,6 @@ void deleteFirstEvent(ListEvent &LE) {
     }
 }
 
-// Menghapus event terakhir
 void deleteLastEvent(ListEvent &LE) {
     if (!isEmptyEvent(LE)) {
         if (LE.first->next == NULL) {
@@ -105,10 +83,7 @@ void deleteLastEvent(ListEvent &LE) {
     }
 }
 
-// Menghapus Event berdasarkan ID
-// Sesuai spesifikasi: Delete element parent berdasarkan ID Event
-// Catatan: Setelah ini pada program utama akan dihubungkan
-//          untuk juga menghapus seluruh relasi event tersebut
+
 bool deleteEvent(ListEvent &LE, string id) {
     if (isEmptyEvent(LE)) return false;
 
@@ -120,7 +95,7 @@ bool deleteEvent(ListEvent &LE, string id) {
         P = P->next;
     }
 
-    if (P == NULL) return false; // ID tidak ditemukan
+    if (P == NULL) return false; 
 
     if (prev == NULL) {
         LE.first = P->next;
@@ -132,8 +107,6 @@ bool deleteEvent(ListEvent &LE, string id) {
     return true;
 }
 
-// ================== COUNT ==================
-// Menghitung jumlah event yang ada
 int countEvent(ListEvent LE) {
     int count = 0;
     adrEvent P = LE.first;
@@ -146,10 +119,7 @@ int countEvent(ListEvent LE) {
     return count;
 }
 
-// ================== SHOW ==================
-// Menampilkan seluruh data event
-// Sesuai spesifikasi: Show all data di List Parent
-// Menampilkan: ID, Nama, Lokasi, Harga, Tanggal, Jam
+
 void showAllEvent(ListEvent LE) {
     if (isEmptyEvent(LE)) {
         cout << "Tidak ada data event." << endl;
@@ -171,3 +141,4 @@ void showAllEvent(ListEvent LE) {
         P = P->next;
     }
 }
+
